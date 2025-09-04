@@ -5,6 +5,7 @@ let msgContainer=document.querySelector('.msg-container');
 let msg=document.querySelector('#msg');
 
 let turnO=true;
+let count=0;
 
 const winPattern=[
     [0,1,2],
@@ -75,23 +76,15 @@ const checkWinners = ()=>{
                 }
             }
     }
-}
+            if(count===9){
+                msg.innerText="Game was a Draw!";
+                msg.msgContainer.classList.remove("hide");
+            }
+        
+    };
 
-box.addEventListener("click",()=>{
-    if(box.innerText===""){
-        box.innerText=currentPlayer;
-        count++;
-        checkWinners();
-    
-    if(count===9 && !gameOver){
-        msg.innerText="Game was a Draw";
-        gameOver=true;
-    }
-    currentPlayer=currentPlayer==="X" ? "O":"X";
-  }
-
-});
 
 newbtn.addEventListener("click",resetGame);
 resetBtn.addEventListener("click",resetGame);
+
 
